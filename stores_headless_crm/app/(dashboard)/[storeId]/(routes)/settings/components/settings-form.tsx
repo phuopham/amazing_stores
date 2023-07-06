@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast"
 import axios from "axios"
 import { useParams, useRouter } from "next/navigation"
 import { AlertModal } from "@/components/modals/alert-modal"
+import { ApiAlert } from "@/components/ui/api-alert"
 
 interface SettingsFormProps {
     initialData: Store
@@ -70,7 +71,7 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
                 <Heading title='Settings' description='Manage store preferences' />
                 <Button disabled={loading} variant='destructive' size='icon' onClick={() => setOpen(true)}><Trash className='h-4 w-4' /></Button>
             </div>
-            <Separator className="my-4" />
+            <Separator />
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
                     <div className="grid grid-cols-3 gap-8">
@@ -86,6 +87,8 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
                     <Button disabled={loading} className="ml-auto" type="submit">Save changes</Button>
                 </form>
             </Form>
+            <Separator />
+            <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public" />
         </>
     )
 }
