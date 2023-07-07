@@ -1,7 +1,6 @@
 import prismadb from "@/lib/prismadb"
 import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
-import { use } from "react"
 
 export const PATCH = async (req: Request, { params }: { params: { storeId: string } }) => {
     try {
