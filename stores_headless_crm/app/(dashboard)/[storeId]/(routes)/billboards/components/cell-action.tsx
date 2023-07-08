@@ -18,13 +18,8 @@ import { AlertModal } from "@/components/modals/alert-modal";
 
 import { BillboardColumn } from "./column";
 
-interface CellActionProps {
-    data: BillboardColumn;
-}
 
-export const CellAction: React.FC<CellActionProps> = ({
-    data,
-}) => {
+export const CellAction = ({ data }: { data: BillboardColumn }) => {
     const router = useRouter();
     const params = useParams();
     const [open, setOpen] = useState(false);

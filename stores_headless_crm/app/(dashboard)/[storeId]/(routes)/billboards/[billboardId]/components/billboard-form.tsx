@@ -68,7 +68,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
             setLoading(true)
             await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`)
             router.refresh()
-            router.push(`/`)
+            router.push(`/${params.storeId}/billboards`)
             toast.success('Billboard deleted successfully!')
         } catch (error) {
             toast.error('Cannot delete billboard by now!!!!')
@@ -109,8 +109,6 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
                     <Button disabled={loading} className="ml-auto" type="submit">{action}</Button>
                 </form>
             </Form>
-            <Separator />
-
         </>
     )
 }

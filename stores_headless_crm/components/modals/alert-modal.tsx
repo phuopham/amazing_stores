@@ -29,7 +29,7 @@ export const AlertModal = ({ isOpen, onClose, onConfirm, loading }: AlertModalPr
                     Cancel
                 </Button>
                 <Button disabled={loading} variant='destructive' onClick={onConfirm}>
-                    I'm sure
+                    Delete
                 </Button>
             </div>
 
