@@ -16,7 +16,7 @@ export const BillboardClient = ({ data }: { data: BillboardColumn[] }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <Heading title={`Billboard ${data.length}`} description='abc for me' />
+                <Heading title='Billboard' description={`${data.length} billboards of the store`} />
                 <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
                     <Plus className="w-4 h-4" /> Add new
                 </Button>
