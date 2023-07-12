@@ -24,7 +24,6 @@ export const PATCH = async (req: Request, { params }: { params: { storeId: strin
         const { userId } = auth()
         const { name, value } = await req.json()
 
-        console.log(params)
         if (!userId) return new NextResponse("Unauthenticated", { status: 401 })
 
         if (!name) return new NextResponse('Color name is required', { status: 400 })
@@ -51,10 +50,7 @@ export const PATCH = async (req: Request, { params }: { params: { storeId: strin
                 value: value
             }
         })
-        console.log(name)
-        console.log(value)
-        console.log(params.colorId)
-        console.log(color)
+
         return NextResponse.json(color)
 
     } catch (error) {
