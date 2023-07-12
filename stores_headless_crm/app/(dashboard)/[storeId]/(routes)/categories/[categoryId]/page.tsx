@@ -1,6 +1,6 @@
-import prismadb from "@/lib/prismadb";
+import prismadb from "@/lib/prismadb"
 
-import { CategoryForm } from "./components/category-form";
+import { CategoryForm } from "./components/category-form"
 
 const CategoryPage = async ({
   params
@@ -11,13 +11,13 @@ const CategoryPage = async ({
     where: {
       id: params.categoryId
     }
-  });
+  })
 
   const billboards = await prismadb.billboard.findMany({
     where: {
       storeId: params.storeId
     }
-  });
+  })
 
   return ( 
     <div className="flex-col">
@@ -25,7 +25,7 @@ const CategoryPage = async ({
         <CategoryForm billboards={billboards} initialData={category} />
       </div>
     </div>
-  );
+  )
 }
 
-export default CategoryPage;
+export default CategoryPage

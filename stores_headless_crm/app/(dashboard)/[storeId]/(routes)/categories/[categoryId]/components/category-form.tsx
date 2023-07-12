@@ -28,7 +28,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const formSchema = z.object({
   name: z.string().min(2),
   billboardId: z.string().min(1),
-});
+})
 
 type CategoryFormValues = z.infer<typeof formSchema>
 
@@ -41,16 +41,16 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   initialData,
   billboards
 }) => {
-  const params = useParams();
-  const router = useRouter();
+  const params = useParams()
+  const router = useRouter()
 
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const title = initialData ? 'Edit category' : 'Create category';
-  const description = initialData ? 'Edit a category.' : 'Add a new category';
-  const toastMessage = initialData ? 'Category updated.' : 'Category created.';
-  const action = initialData ? 'Save changes' : 'Create';
+  const title = initialData ? 'Edit category' : 'Create category'
+  const description = initialData ? 'Edit a category.' : 'Add a new category'
+  const toastMessage = initialData ? 'Category updated.' : 'Category created.'
+  const action = initialData ? 'Save changes' : 'Create'
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
@@ -58,38 +58,38 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       name: '',
       billboardId: '',
     }
-  });
+  })
 
   const onSubmit = async (data: CategoryFormValues) => {
     try {
-      setLoading(true);
+      setLoading(true)
       if (initialData) {
-        await axios.patch(`/api/${params.storeId}/categories/${params.categoryId}`, data);
+        await axios.patch(`/api/${params.storeId}/categories/${params.categoryId}`, data)
       } else {
-        await axios.post(`/api/${params.storeId}/categories`, data);
+        await axios.post(`/api/${params.storeId}/categories`, data)
       }
-      router.refresh();
-      router.push(`/${params.storeId}/categories`);
-      toast.success(toastMessage);
+      router.refresh()
+      router.push(`/${params.storeId}/categories`)
+      toast.success(toastMessage)
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Something went wrong.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const onDelete = async () => {
     try {
-      setLoading(true);
-      await axios.delete(`/api/${params.storeId}/categories/${params.categoryId}`);
-      router.refresh();
-      router.push(`/${params.storeId}/categories`);
-      toast.success('Category deleted.');
+      setLoading(true)
+      await axios.delete(`/api/${params.storeId}/categories/${params.categoryId}`)
+      router.refresh()
+      router.push(`/${params.storeId}/categories`)
+      toast.success('Category deleted.')
     } catch (error: any) {
-      toast.error('Make sure you removed all products using this category first.');
+      toast.error('Make sure you removed all products using this category first.')
     } finally {
-      setLoading(false);
-      setOpen(false);
+      setLoading(false)
+      setOpen(false)
     }
   }
 
@@ -160,5 +160,5 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
         </form>
       </Form>
     </>
-  );
-};
+  )
+}

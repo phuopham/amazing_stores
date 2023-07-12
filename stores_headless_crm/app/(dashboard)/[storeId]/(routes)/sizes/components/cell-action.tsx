@@ -1,47 +1,47 @@
-"use client";
+"use client"
 
-import axios from "axios";
-import { useState } from "react";
-import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
-import { toast } from "react-hot-toast";
-import { useParams, useRouter } from "next/navigation";
+import axios from "axios"
+import { useState } from "react"
+import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react"
+import { toast } from "react-hot-toast"
+import { useParams, useRouter } from "next/navigation"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import { AlertModal } from "@/components/modals/alert-modal";
+} from "@/components/ui/dropdown-menu"
+import { AlertModal } from "@/components/modals/alert-modal"
 
-import { SizeColumn } from "./column";
+import { SizeColumn } from "./column"
 
 
 export const CellAction = ({ data }: { data: SizeColumn }) => {
-    const router = useRouter();
-    const params = useParams();
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const router = useRouter()
+    const params = useParams()
+    const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const onConfirm = async () => {
         try {
-            setLoading(true);
-            await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
-            toast.success('Size deleted.');
-            router.refresh();
+            setLoading(true)
+            await axios.delete(`/api/${params.storeId}/sizes/${data.id}`)
+            toast.success('Size deleted.')
+            router.refresh()
         } catch (error) {
-            toast.error('Make sure you removed all products using this size first.');
+            toast.error('Make sure you removed all products using this size first.')
         } finally {
-            setOpen(false);
-            setLoading(false);
+            setOpen(false)
+            setLoading(false)
         }
-    };
+    }
 
     const onCopy = (id: string) => {
-        navigator.clipboard.writeText(id);
-        toast.success('Size ID copied to clipboard.');
+        navigator.clipboard.writeText(id)
+        toast.success('Size ID copied to clipboard.')
     }
 
     return (
@@ -79,5 +79,5 @@ export const CellAction = ({ data }: { data: SizeColumn }) => {
                 </DropdownMenuContent>
             </DropdownMenu>
         </>
-    );
-};
+    )
+}
