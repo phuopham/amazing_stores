@@ -8,6 +8,7 @@
 /stores_headless_crm/node_modules
 /stores_headless_crm/.pnp
 .pnp.js
+node_modules
 
 # testing
 /stores_headless_crm/coverage
