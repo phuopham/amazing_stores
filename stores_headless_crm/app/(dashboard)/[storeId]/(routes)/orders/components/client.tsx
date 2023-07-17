@@ -6,13 +6,9 @@ import { Separator } from "@/components/ui/separator";
 
 import { columns, OrderColumn } from "./columns";
 
-interface OrderClientProps {
-  data: OrderColumn[];
-}
-
-export const OrderClient: React.FC<OrderClientProps> = ({
+export const OrderClient = ({
   data
-}) => {
+}: { data: OrderColumn[] }) => {
   return (
     <>
       <Heading title={`Orders (${data.length})`} description="Manage orders for your store" />

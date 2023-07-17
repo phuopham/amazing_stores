@@ -7,11 +7,11 @@ import { toast } from "react-hot-toast"
 import { useParams, useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuLabel, 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 import { useCategoryModal } from "@/hooks/use-category-modal"
@@ -23,9 +23,9 @@ interface CellActionProps {
   data: CategoryColumn;
 }
 
-export const CellAction: React.FC<CellActionProps> = ({
+export const CellAction = ({
   data,
-}) => {
+}: { data: CategoryColumn }) => {
   const router = useRouter()
   const params = useParams()
   const [open, setOpen] = useState(false)
@@ -52,8 +52,8 @@ export const CellAction: React.FC<CellActionProps> = ({
 
   return (
     <>
-      <AlertModal 
-        isOpen={open} 
+      <AlertModal
+        isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onConfirm}
         loading={loading}

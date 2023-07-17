@@ -12,13 +12,9 @@ import { ApiAlert } from "@/components/ui/api-alert"
 import { columns, CategoryColumn } from "./columns"
 import { ApiList } from "@/components/ui/api-list"
 
-interface CategoriesClientProps {
-  data: CategoryColumn[];
-}
-
-export const CategoriesClient: React.FC<CategoriesClientProps> = ({
+export const CategoriesClient = ({
   data
-}) => {
+}: { data: CategoryColumn[] }) => {
   const params = useParams()
   const router = useRouter()
 

@@ -42,12 +42,12 @@ interface ProductFormProps {
     sizes: Size[];
 };
 
-export const ProductForm: React.FC<ProductFormProps> = ({
+export const ProductForm = ({
     initialData,
     categories,
     sizes,
     colors
-}) => {
+}: ProductFormProps) => {
     const params = useParams()
     const router = useRouter()
 

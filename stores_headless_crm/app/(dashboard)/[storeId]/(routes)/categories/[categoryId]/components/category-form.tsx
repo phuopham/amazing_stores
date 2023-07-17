@@ -37,10 +37,10 @@ interface CategoryFormProps {
   billboards: Billboard[];
 };
 
-export const CategoryForm: React.FC<CategoryFormProps> = ({
+export const CategoryForm = ({
   initialData,
   billboards
-}) => {
+}: CategoryFormProps) => {
   const params = useParams()
   const router = useRouter()
 
@@ -95,13 +95,13 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
   return (
     <>
-    <AlertModal 
-      isOpen={open} 
-      onClose={() => setOpen(false)}
-      onConfirm={onDelete}
-      loading={loading}
-    />
-     <div className="flex items-center justify-between">
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
+      <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
         {initialData && (
           <Button
